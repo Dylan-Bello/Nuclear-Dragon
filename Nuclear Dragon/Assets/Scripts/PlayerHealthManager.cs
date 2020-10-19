@@ -5,13 +5,13 @@ using UnityEngine;
 public class PlayerHealthManager : MonoBehaviour
 {
 
-    public int playerMaxHealth;
+    public int playerStartingHealth = 50;
     public int playerCurrentHealth;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerCurrentHealth = playerMaxHealth;
+        playerCurrentHealth = playerStartingHealth;
     }
 
     // Update is called once per frame
@@ -19,17 +19,14 @@ public class PlayerHealthManager : MonoBehaviour
     {
         if(playerCurrentHealth <= 0)
         {
-            gameObject.SetActive(false);
+            Destroy(this.gameObject, 1f);
         }
     }
 
-    public void HurtPlayer (int damageToGive)
+    public void TakeDamage (int damageToTake)
     {
-        playerCurrentHealth -= damageToGive;
+        playerCurrentHealth -= damageToTake;
     }
 
-    public void SetMaxHealth ()
-    {
-        playerCurrentHealth = playerMaxHealth
-    }
+   
 }

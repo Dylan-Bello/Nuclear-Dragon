@@ -22,7 +22,7 @@ public class HurtPlayer : MonoBehaviour
     {
         if(other.gameObject.name == "Player")
         {
-            other.gameObject.GetComponent<PlayerHealthManager>().HurtPlayer(damageToGive);
+            other.gameObject.GetComponent<PlayerHealthManager>().TakeDamage(damageToGive);
         }
     }
 }
