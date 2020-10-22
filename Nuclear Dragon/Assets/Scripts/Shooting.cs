@@ -4,31 +4,29 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    public float fireDelay = 0.5f;
-    private float cooldownTimer = 0;
-    private Rigidbody2D rb;
-    public float bulletSpeed = 15f;
+    public Rigidbody2D projectile;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
+    //public float bulletSpeed;
+
+    public float fireDelay;
+    private float cooldownTimer = 0;
 
     // Update is called once per frame
     void Update()
     {
+
         cooldownTimer -= Time.deltaTime;
 
         if (Input.GetKey(KeyCode.Space) && cooldownTimer <= 0)
         {
-            Vector2 force = transform.up * bulletSpeed;
+            Rigidbody2D instantiatedProjectile = Instantiate(projectile, transform.position, transform.rotation) as Rigidbody2D;
 
-            rb.AddForce(force);
-            Debug.Log("Fire!");
+            /*instantiatedProjectile.velocity = transform.TransformDirection(new Vector3(0, 0, bulletSpeed));*/
+          
+
             cooldownTimer = fireDelay;
-        }
 
+        }
 
     }
 

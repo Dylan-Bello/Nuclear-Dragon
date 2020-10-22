@@ -19,7 +19,7 @@ public class PlayerHealthManager : MonoBehaviour
     {
         if(playerCurrentHealth <= 0)
         {
-            Destroy(this.gameObject, 1f);
+            Destroy(this.gameObject);
         }
     }
 

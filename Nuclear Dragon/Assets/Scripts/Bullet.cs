@@ -4,20 +4,15 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    public float bulletSpeed;
+    public float bulletSpeed = 0.1f; 
     public int damageToGive;
 
-    void Start()
-    {
-        rb = this.GetComponent<Rigidbody2D>();
-    }
 
     void Update()
     {
-        Vector2 pos = transform.position;
-        Vector2 velocity = new Vector2(bulletSpeed * Time.deltaTime, 0);
-        pos = transform.rotation * velocity;
+        Vector3 pos = transform.position;
+        Vector3 velocity = new Vector3(0* Time.deltaTime, bulletSpeed);
+        pos += transform.rotation * velocity;
         transform.position = pos;
     }
 
