@@ -5,8 +5,7 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
     public Rigidbody2D projectile;
-
-    //public float bulletSpeed;
+    public Transform spawnPoint;
 
     public float fireDelay;
     private float cooldownTimer = 0;
@@ -17,17 +16,19 @@ public class Shooting : MonoBehaviour
 
         cooldownTimer -= Time.deltaTime;
 
+
         if (Input.GetKey(KeyCode.Space) && cooldownTimer <= 0)
         {
-            Rigidbody2D instantiatedProjectile = Instantiate(projectile, transform.position, transform.rotation) as Rigidbody2D;
-
-            /*instantiatedProjectile.velocity = transform.TransformDirection(new Vector3(0, 0, bulletSpeed));*/
-          
-
-            cooldownTimer = fireDelay;
-
+            Shoot();
         }
+            
 
     }
+    void Shoot() 
+    {
+        Rigidbody2D bullet = Instantiate(projectile, spawnPoint.position, spawnPoint.rotation) as Rigidbody2D;
 
+        cooldownTimer = fireDelay;
+
+    }
 }
