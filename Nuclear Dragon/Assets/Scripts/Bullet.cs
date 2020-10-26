@@ -8,6 +8,11 @@ public class Bullet : MonoBehaviour
     public int damageToGive;
 
 
+    private void Start()
+    {
+       
+        Destroy(gameObject, 3f);
+    }
     void Update()
     {
         Vector3 pos = transform.position;
