@@ -189,7 +189,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2211432549197675671}
-  - component: {fileID: 2211432549197675670}
   m_Layer: 9
   m_Name: Weapon
   m_TagString: Untagged
@@ -212,21 +211,6 @@ Transform:
   m_Father: {fileID: 2211432549064280226}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2211432549197675670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2211432549197675664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 532a3e37cf6f1dd4497768f1ed1a1b02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 7467954164328757000, guid: 7d0877f4f7bde694f89def5435c7ae5b, type: 3}
-  spawnPoint: {fileID: 0}
-  fireDelay: 0.8
 --- !u!1001 &2211432547994630430
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -244,11 +228,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4925971400011993567, guid: a10ae08b77b55b54f8bff680b101881c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.17000008
       objectReference: {fileID: 0}
     - target: {fileID: 4925971400011993567, guid: a10ae08b77b55b54f8bff680b101881c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.161
+      value: -0.02000003
       objectReference: {fileID: 0}
     - target: {fileID: 4925971400011993567, guid: a10ae08b77b55b54f8bff680b101881c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -264,11 +248,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4925971400011993567, guid: a10ae08b77b55b54f8bff680b101881c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.709219
       objectReference: {fileID: 0}
     - target: {fileID: 4925971400011993567, guid: a10ae08b77b55b54f8bff680b101881c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.70498824
       objectReference: {fileID: 0}
     - target: {fileID: 4925971400011993567, guid: a10ae08b77b55b54f8bff680b101881c, type: 3}
       propertyPath: m_RootOrder
@@ -284,7 +268,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4925971400011993567, guid: a10ae08b77b55b54f8bff680b101881c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -90.343
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 839675335005739518, guid: a10ae08b77b55b54f8bff680b101881c, type: 3}
