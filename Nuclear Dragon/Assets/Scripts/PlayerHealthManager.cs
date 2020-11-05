@@ -15,11 +15,11 @@ public class PlayerHealthManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(playerCurrentHealth <= 0)
         {
-            Destroy(this.gameObject, 1f);
+            Destroy(this.gameObject);
         }
     }
 

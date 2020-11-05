@@ -4,33 +4,36 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    private Vector2 screenBounds;
+    public float bulletSpeed = 3f; 
+    public int damageToTake;
 
-    void Start()
+
+    void Awake()
     {
-        rb = this.GetComponent<Rigidbody2D>();
-        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-    }
+       Destroy(this.gameObject, 3f);
 
+    }
     void Update()
     {
-        //Destroy bullet object that is no longer on screen
-        if (transform.position.x > screenBounds.x * -2)
-        {
-            Destroy(this.gameObject);
-        }
-        if (transform.position.x < screenBounds.x * 2)
-        {
-            Destroy(this.gameObject);
-        }
-        if (transform.position.y > screenBounds.y * -2)
-        {
-            Destroy(this.gameObject);
-        }
-        if (transform.position.y < screenBounds.y * 2)
-        {
-            Destroy(this.gameObject);
-        }
+        Vector3 pos = transform.position;
+        Vector3 velocity = new Vector3(0 * Time.deltaTime, bulletSpeed);
+        pos += transform.rotation * velocity;
+        transform.position = pos;
+
+        //Debug.Log("Working");
     }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        //if (other.gameObject.tag == "Player")
+        //{
+            other.gameObject.GetComponent<PlayerHealthManager>().TakeDamage(damageToTake);
+
+            Destroy(this.gameObject);
+
+            //Debug.Log("Bullet Hit!");
+       // }
+
+        //Debug.Log("Collision Detected");
+    }
+
 }

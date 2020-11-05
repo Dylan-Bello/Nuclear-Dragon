@@ -8,7 +8,7 @@ public class TriggerZoneEvent : MonoBehaviour
     public UnityEvent unityEvent;
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         unityEvent.Invoke();
     }
