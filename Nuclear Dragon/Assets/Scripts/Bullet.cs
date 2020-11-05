@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float bulletSpeed = 1f; 
-    public int damageToGive;
+    public float bulletSpeed = 3f; 
+    public int damageToTake;
 
 
-    private void Start()
+    void Awake()
     {
-       
-        Destroy(gameObject, 3f);
+       Destroy(this.gameObject, 3f);
+
     }
     void Update()
     {
@@ -19,10 +19,21 @@ public class Bullet : MonoBehaviour
         Vector3 velocity = new Vector3(0 * Time.deltaTime, bulletSpeed);
         pos += transform.rotation * velocity;
         transform.position = pos;
-    }
 
+        //Debug.Log("Working");
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
-        //other.gameObject.GetComponent<PlayerHealthManager>().TakeDamage(damageToGive);
+        //if (other.gameObject.tag == "Player")
+        //{
+            other.gameObject.GetComponent<PlayerHealthManager>().TakeDamage(damageToTake);
+
+            Destroy(this.gameObject);
+
+            //Debug.Log("Bullet Hit!");
+       // }
+
+        //Debug.Log("Collision Detected");
     }
+
 }

@@ -7,6 +7,10 @@ public class Enemy : MonoBehaviour
     public float moveSpeed;
     public float turnSpeed;
     public float stopDistance;
+    public float fireRange;
+    public float fireDelay;
+
+    private float cooldownTimer;
 
     public Transform target;
     private Rigidbody rb;
@@ -14,23 +18,30 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //target = GameObject.FindGameObjectWithTag("Player").transform;
-
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         //transform.LookAt(Vector3.zero);
+        cooldownTimer -= Time.deltaTime;
+
+        Vector3 direction = target.position - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Vector3 rotation = new Vector3(0, 0, angle);
 
         if (Vector2.Distance(transform.position, target.position) > stopDistance)
         {
             Chase();
         }
 
-        Vector3 direction = target.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        Vector3 rotation = new Vector3(0, 0, angle);
+        if (Vector2.Distance(transform.position, target.position) < fireRange && cooldownTimer <= 0)
+        {
+            this.gameObject.GetComponent<Shooting>().Shoot();
+            cooldownTimer = fireDelay;
+        }
 
         UpdateRotation(rotation);
     }

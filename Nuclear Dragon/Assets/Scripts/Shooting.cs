@@ -4,29 +4,17 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    public Rigidbody2D projectile;
+    public GameObject projectile;
     public Transform spawnPoint;
 
     public float fireDelay;
-    private float cooldownTimer = 0;
+    public float cooldownTimer;
 
     // Update is called once per frame
-    void Update()
+    
+    public void Shoot() 
     {
-
-        cooldownTimer -= Time.deltaTime;
-
-
-        if (Input.GetKey(KeyCode.Space) && cooldownTimer <= 0)
-        {
-            Shoot();
-        }
-            
-
-    }
-    void Shoot() 
-    {
-        Rigidbody2D bullet = Instantiate(projectile, spawnPoint.position, spawnPoint.rotation) as Rigidbody2D;
+        GameObject bullet = Instantiate(projectile, spawnPoint.position, spawnPoint.rotation);
 
         cooldownTimer = fireDelay;
 
