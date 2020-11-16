@@ -465,23 +465,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2211432549064280231, guid: 3b1045e15b20b6a41bd392d863d401b0, type: 3}
       propertyPath: moveSpeed
-      value: 30
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2211432549064280231, guid: 3b1045e15b20b6a41bd392d863d401b0, type: 3}
       propertyPath: turnSpeed
-      value: 0.05
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2211432549064280231, guid: 3b1045e15b20b6a41bd392d863d401b0, type: 3}
       propertyPath: stopDistance
-      value: 0.5
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2211432549064280231, guid: 3b1045e15b20b6a41bd392d863d401b0, type: 3}
       propertyPath: fireRange
-      value: 30
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2211432549064280231, guid: 3b1045e15b20b6a41bd392d863d401b0, type: 3}
+      propertyPath: fireDelay
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2211432549064280237, guid: 3b1045e15b20b6a41bd392d863d401b0, type: 3}
       propertyPath: m_Name
-      value: Enemy (1)
+      value: Enemy Turret
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b1045e15b20b6a41bd392d863d401b0, type: 3}
