@@ -20,7 +20,7 @@ public class Shooting : MonoBehaviour
 
         if(Player)
         {
-            bullet.layer = 8;
+            bullet.layer = 11;
         }
     }
 }
