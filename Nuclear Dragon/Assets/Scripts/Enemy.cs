@@ -12,6 +12,10 @@ public class Enemy : MonoBehaviour
 
     private float cooldownTimer;
 
+    //Gavin's edit
+    public int enemyStartingHealth = 20;
+    public int enemyCurrentHealth;
+
     public Transform target;
     private Rigidbody rb;
 
@@ -20,11 +24,17 @@ public class Enemy : MonoBehaviour
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         
+        //Gavin's edit
+        enemyCurrentHealth = enemyStartingHealth;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
+
+
         //transform.LookAt(Vector3.zero);
         cooldownTimer -= Time.deltaTime;
 
@@ -39,7 +49,7 @@ public class Enemy : MonoBehaviour
 
         if (Vector2.Distance(transform.position, target.position) < fireRange && cooldownTimer <= 0)
         {
-            this.gameObject.GetComponent<Shooting>().Shoot();
+            this.gameObject.GetComponent<Shooting>().Shoot(false);
             cooldownTimer = fireDelay;
         }
 
@@ -55,6 +65,20 @@ public class Enemy : MonoBehaviour
     {
         Quaternion rotation = Quaternion.Euler(angle);
         this.transform.rotation = Quaternion.Lerp(this.transform.rotation, rotation, turnSpeed * Time.deltaTime);
+    }
+
+    //Gavin's edit
+    void FixedUpdate()
+    {
+        if(enemyCurrentHealth <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    public void TakeDamage (int damageToTake)
+    {
+        enemyCurrentHealth -= damageToTake;
     }
 
 }

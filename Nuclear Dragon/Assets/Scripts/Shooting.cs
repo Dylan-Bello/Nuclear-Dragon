@@ -12,11 +12,15 @@ public class Shooting : MonoBehaviour
 
     // Update is called once per frame
     
-    public void Shoot() 
+    public void Shoot(bool Player) 
     {
         GameObject bullet = Instantiate(projectile, spawnPoint.position, spawnPoint.rotation);
 
         cooldownTimer = fireDelay;
 
+        if(Player)
+        {
+            bullet.layer = 8;
+        }
     }
 }

@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && shooting.cooldownTimer <= 0)
         {
-            shooting.Shoot();
+            shooting.Shoot(true);
         }
 
 
