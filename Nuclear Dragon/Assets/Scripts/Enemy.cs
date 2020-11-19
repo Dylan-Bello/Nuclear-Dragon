@@ -10,7 +10,14 @@ public class Enemy : MonoBehaviour
     public float fireRange;
     public float fireDelay;
 
+    //How much time between bursts
+    public float burstDelay;
+    //How many bullets per burst
+    public float bulletsPerBurst;
+
     private float cooldownTimer;
+    private float burstCount;
+    private float burstCoolDownTimer;
 
     //Gavin's edit
     public int enemyStartingHealth = 20;
@@ -37,6 +44,7 @@ public class Enemy : MonoBehaviour
 
         //transform.LookAt(Vector3.zero);
         cooldownTimer -= Time.deltaTime;
+        burstCoolDownTimer -= Time.deltaTime;
 
         Vector3 direction = target.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -47,10 +55,19 @@ public class Enemy : MonoBehaviour
             Chase();
         }
 
-        if (Vector2.Distance(transform.position, target.position) < fireRange && cooldownTimer <= 0)
+        if (Vector2.Distance(transform.position, target.position) < fireRange && cooldownTimer <= 0 && burstCoolDownTimer <= 0)
         {
             this.gameObject.GetComponent<Shooting>().Shoot(false);
             cooldownTimer = fireDelay;
+
+            //A second timer for spacing out bursts of projectiles
+            burstCount++;
+            if (burstCount >= bulletsPerBurst)
+            {
+                burstCount = 0;
+                burstCoolDownTimer = burstDelay;
+            }
+
         }
 
         UpdateRotation(rotation);
