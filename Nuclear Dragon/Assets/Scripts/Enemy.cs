@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public float stopDistance;
     public float fireRange;
     public float fireDelay;
+    //public GameObject Projectile;
 
     private float cooldownTimer;
 
