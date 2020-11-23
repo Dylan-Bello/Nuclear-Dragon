@@ -5,13 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public int score;
+    public float xp = 0;
+    public float xpForNextLevel = 10;
+    public int level = 1;
+
 
     private Shooting shooting;
-    
-    
 
-    // Start is called before the first frame update
+
+    private void Start()
+    {
+        SetXpForNextLevel();
+        
+    }
+
+
     void Awake()
     {
         shooting = this.GetComponent<Shooting>();
@@ -24,19 +32,49 @@ public class PlayerController : MonoBehaviour
 
         shooting.cooldownTimer -= Time.deltaTime;
 
-
+        //Shoot
         if (Input.GetKey(KeyCode.Space) && shooting.cooldownTimer <= 0)
         {
             shooting.Shoot(true);
         }
 
-        //quit game
+        //Quit game
         if (Input.GetKey(KeyCode.Escape) == true)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
 
+        //Level up
+        if (xp >= xpForNextLevel)
+        {
+            LevelUp();
+        }
+
+
     }
 
-    
+    void SetXpForNextLevel()
+    {
+        xpForNextLevel = (10f + (level * level * 1f));
+        Debug.Log("xpForNextLevel " + xpForNextLevel);
+    }
+
+    void LevelUp()
+    {
+        xp = 0f;
+        level++;
+        Debug.Log("level" + level);
+        SetXpForNextLevel();
+
+    }
+
+    public void GainXP(int xpToGain)
+    {
+        xp += xpToGain;
+        Debug.Log("Gained " + xpToGain + " XP, Current Xp = " + xp + ", XP needed to reach next Level = " + xpForNextLevel);
+    }
+
+
+
+
 }

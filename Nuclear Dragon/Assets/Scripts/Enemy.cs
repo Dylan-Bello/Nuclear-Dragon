@@ -7,8 +7,11 @@ public class Enemy : MonoBehaviour
     public float moveSpeed;
     public float turnSpeed;
     public float stopDistance;
+
     public float fireRange;
     public float fireDelay;
+
+    public int xpValue = 1;
     //public GameObject Projectile;
 
     //How much time between bursts
@@ -41,8 +44,6 @@ public class Enemy : MonoBehaviour
     void Update()
     {
 
-
-
         //transform.LookAt(Vector3.zero);
         cooldownTimer -= Time.deltaTime;
         burstCoolDownTimer -= Time.deltaTime;
@@ -72,6 +73,8 @@ public class Enemy : MonoBehaviour
         }
 
         UpdateRotation(rotation);
+
+         
     }
 
     void Chase()
@@ -91,6 +94,8 @@ public class Enemy : MonoBehaviour
         if(enemyCurrentHealth <= 0)
         {
             Destroy(this.gameObject);
+            target.GetComponent<PlayerController>().GainXP(xpValue);
+            
         }
     }
 
