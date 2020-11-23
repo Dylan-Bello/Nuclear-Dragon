@@ -5,12 +5,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Shooting shooting;
+    private MainMenu pause;
     
 
     // Start is called before the first frame update
     void Awake()
     {
         shooting = this.GetComponent<Shooting>();
+        pause = this.GetComponent<MainMenu>();
     }
 
     // Update is called once per frame
@@ -25,6 +27,9 @@ public class PlayerController : MonoBehaviour
             shooting.Shoot(true);
         }
 
+      
 
     }
+
+    
 }
