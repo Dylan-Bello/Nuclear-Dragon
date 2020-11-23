@@ -1,18 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    public int score;
+
     private Shooting shooting;
-    private MainMenu pause;
+    
     
 
     // Start is called before the first frame update
     void Awake()
     {
         shooting = this.GetComponent<Shooting>();
-        pause = this.GetComponent<MainMenu>();
+        
     }
 
     // Update is called once per frame
@@ -27,7 +30,11 @@ public class PlayerController : MonoBehaviour
             shooting.Shoot(true);
         }
 
-      
+        //quit game
+        if (Input.GetKey(KeyCode.Escape) == true)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        }
 
     }
 
