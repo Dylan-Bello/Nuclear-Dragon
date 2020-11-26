@@ -10,11 +10,13 @@ public class Flight : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
+        player = this.gameObject;
     }
 
     // Update is called once per frame
@@ -26,6 +28,12 @@ public class Flight : MonoBehaviour
         Thrust(yAxis);
 
         Rotate(transform, xAxis * -turnSpeed);
+
+        Vector3 endPos = player.transform.position;
+
+        transform.position = new Vector3(
+            Mathf.Clamp(endPos.x, -760f, 1000f),
+            Mathf.Clamp(endPos.y, -80f, 230f), transform.position.z);
     }
 
     void ClampVelocity()
