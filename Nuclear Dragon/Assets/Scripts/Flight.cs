@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Flight : MonoBehaviour
 {
-    public float maxVelocity = 3;
+    public float maxVelocity;
 
     public float turnSpeed;
 

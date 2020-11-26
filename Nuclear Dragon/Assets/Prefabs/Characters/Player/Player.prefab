@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 804920975565445553}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 55.24, y: -29.6, z: -0.26603}
-  m_LocalScale: {x: 1.1259211, y: 0.838035, z: 0.36668953}
+  m_LocalScale: {x: 1.6750283, y: 1.2467413, z: 0.5455226}
   m_Children:
   - {fileID: 804920975788838888}
   - {fileID: 5171521374007593947}
@@ -139,6 +139,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d66f215d79de7448f2feb4906ae2b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xp: 0
+  xpForNextLevel: 10
+  level: 1
 --- !u!114 &804920975565445561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStartingHealth: 100
   playerCurrentHealth: 0
+  healthBar: {fileID: 0}
 --- !u!114 &804920975565445567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,7 +212,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804920975788838894}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.1, y: -0.21, z: -16.328}
+  m_LocalPosition: {x: -0.24, y: 0.01, z: -16.328}
   m_LocalScale: {x: 0.60454273, y: 0.98255867, z: 1.1}
   m_Children: []
   m_Father: {fileID: 804920975565445565}
