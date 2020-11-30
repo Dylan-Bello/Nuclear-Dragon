@@ -95,7 +95,7 @@ public class Enemy : MonoBehaviour
         {
             Destroy(this.gameObject);
             target.GetComponent<PlayerController>().GainXP(xpValue);
-            
+
         }
     }
 
