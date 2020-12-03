@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
         if (xp >= xpForNextLevel)
         {
             LevelUp();
+            shooting.ChangeWeapon();
         }
 
 

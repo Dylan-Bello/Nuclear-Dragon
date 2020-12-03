@@ -9,9 +9,16 @@ public class Shooting : MonoBehaviour
 
     public float fireDelay;
     public float cooldownTimer;
+    private int projectileIndex = 0;
 
-    // Update is called once per frame
-    
+    public GameObject[] ProjectileType = new GameObject[3];
+    public List<Transform> spawnpoints; //This needs Fixing
+
+    private void Start()
+    {
+        //bulletSpawn = GameObject.GetComponent<Bullet>.spawnPoint; ----  This needs Fixing
+    }
+
     public void Shoot(bool Player) 
     {
         GameObject bullet = Instantiate(projectile, spawnPoint.position, spawnPoint.rotation);
@@ -22,5 +29,17 @@ public class Shooting : MonoBehaviour
         {
             bullet.layer = 11;
         }
+    }
+
+    public void ChangeWeapon()
+    {
+        if(projectileIndex <= ProjectileType.Length)
+        {
+            projectileIndex++;
+            this.projectile = ProjectileType[projectileIndex];
+
+
+        }
+        
     }
 }
