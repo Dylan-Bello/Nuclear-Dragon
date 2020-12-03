@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour
     //Gavin's edit
     public int enemyStartingHealth = 20;
     public int enemyCurrentHealth;
+    public int scoreValue = 10;
 
     public Transform shootTarget;
     public Transform[] moveTarget;
@@ -34,8 +35,7 @@ public class Enemy : MonoBehaviour
 
     public bool isPlayerChaser;
 
-    // Start is called before the first frame update
-    void Start()
+void Start()
     {
         shootTarget = GameObject.FindGameObjectWithTag("Player").transform;
         moveTargetIndex = 0;
@@ -112,6 +112,7 @@ public class Enemy : MonoBehaviour
     {
         if(enemyCurrentHealth <= 0)
         {
+            ScoreManager.score += scoreValue;
             Destroy(this.gameObject);
             shootTarget.GetComponent<PlayerController>().GainXP(xpValue);
 
@@ -122,5 +123,7 @@ public class Enemy : MonoBehaviour
     {
         enemyCurrentHealth -= damageToTake;
     }
+
+
 
 }
