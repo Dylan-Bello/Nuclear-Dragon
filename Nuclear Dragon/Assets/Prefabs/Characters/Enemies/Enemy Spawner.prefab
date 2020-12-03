@@ -46,5 +46,5 @@ MonoBehaviour:
   enemyType: {fileID: 268963440699746631, guid: 89c6ba22b23fd2742955ea5b5ab569b3, type: 3}
   livingEnemies: 0
   spawnPoint: {fileID: 3817569967794752852}
-  count: 10
-  rate: 2
+  count: 25
+  rate: 10
