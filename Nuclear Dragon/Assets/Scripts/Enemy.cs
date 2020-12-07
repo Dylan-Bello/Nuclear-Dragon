@@ -20,20 +20,30 @@ public class Enemy : MonoBehaviour
     public float bulletsPerBurst;
 
     private float cooldownTimer;
-    private float burstCount;
+    private float burstCount = 0;
     private float burstCoolDownTimer;
 
     //Gavin's edit
     public int enemyStartingHealth = 20;
     public int enemyCurrentHealth;
+    public int scoreValue = 10;
 
-    public Transform target;
+    public Transform shootTarget;
+    public Transform[] moveTarget;
+    private int moveTargetIndex;
     private Rigidbody rb;
 
-    // Start is called before the first frame update
-    void Start()
+    public bool isPlayerChaser;
+
+void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        shootTarget = GameObject.FindGameObjectWithTag("Player").transform;
+        moveTargetIndex = 0;
+
+        if (isPlayerChaser == true)
+        {
+            moveTarget[0] = GameObject.FindGameObjectWithTag("Player").transform;
+        }
         
         //Gavin's edit
         enemyCurrentHealth = enemyStartingHealth;
@@ -48,16 +58,25 @@ public class Enemy : MonoBehaviour
         cooldownTimer -= Time.deltaTime;
         burstCoolDownTimer -= Time.deltaTime;
 
-        Vector3 direction = target.position - transform.position;
+        Vector3 direction = shootTarget.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Vector3 rotation = new Vector3(0, 0, angle);
 
-        if (Vector2.Distance(transform.position, target.position) > stopDistance)
+        if (Vector2.Distance(transform.position, moveTarget[moveTargetIndex].position) > stopDistance)
         {
             Chase();
         }
+        else //when reaching destination, select and move to the next destination,
+        {
+            moveTargetIndex++;
+            if (moveTargetIndex == moveTarget.Length)
+            {
+                //and then back to the start.
+                moveTargetIndex = 0;
+            }
+        }
 
-        if (Vector2.Distance(transform.position, target.position) < fireRange && cooldownTimer <= 0 && burstCoolDownTimer <= 0)
+        if (Vector2.Distance(transform.position, shootTarget.position) < fireRange && cooldownTimer <= 0 && burstCoolDownTimer <= 0)
         {
             this.gameObject.GetComponent<Shooting>().Shoot(false);
             cooldownTimer = fireDelay;
@@ -79,7 +98,7 @@ public class Enemy : MonoBehaviour
 
     void Chase()
     {
-        transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, moveTarget[moveTargetIndex].position, moveSpeed * Time.deltaTime);
     }
 
     void UpdateRotation(Vector3 angle)
@@ -93,8 +112,9 @@ public class Enemy : MonoBehaviour
     {
         if(enemyCurrentHealth <= 0)
         {
+            ScoreManager.score += scoreValue;
             Destroy(this.gameObject);
-            target.GetComponent<PlayerController>().GainXP(xpValue);
+            shootTarget.GetComponent<PlayerController>().GainXP(xpValue);
 
         }
     }
@@ -103,5 +123,7 @@ public class Enemy : MonoBehaviour
     {
         enemyCurrentHealth -= damageToTake;
     }
+
+
 
 }

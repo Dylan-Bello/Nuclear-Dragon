@@ -12,12 +12,6 @@ public class Shooting : MonoBehaviour
     private int projectileIndex = 0;
 
     public GameObject[] ProjectileType = new GameObject[3];
-    public List<Transform> spawnpoints; //This needs Fixing
-
-    private void Start()
-    {
-        //bulletSpawn = GameObject.GetComponent<Bullet>.spawnPoint; ----  This needs Fixing
-    }
 
     public void Shoot(bool Player) 
     {
