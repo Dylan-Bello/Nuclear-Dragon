@@ -12,6 +12,8 @@ public class Flight : MonoBehaviour
 
     GameObject player;
 
+    public bool thrust = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +28,7 @@ public class Flight : MonoBehaviour
         float yAxis = Input.GetAxis("Vertical");
        
         Thrust(yAxis);
-
+        
         Rotate(transform, xAxis * -turnSpeed);
 
         Vector3 endPos = player.transform.position;
@@ -34,6 +36,10 @@ public class Flight : MonoBehaviour
         transform.position = new Vector3(
             Mathf.Clamp(endPos.x, -760f, 1000f),
             Mathf.Clamp(endPos.y, -80f, 230f), transform.position.z);
+
+       
+
+
     }
 
     void ClampVelocity()
@@ -48,9 +54,20 @@ public class Flight : MonoBehaviour
         Vector2 force = transform.up * amount;
 
         rb.AddForce(force);
+
+        
     }
     void Rotate(Transform t, float amount)
     {
         t.Rotate(0, 0, amount);
+    }
+
+    public void CheckThrust()
+    {
+        if (Input.GetKeyDown(KeyCode.W) == true)
+        {
+            thrust = true;
+            Debug.Log("Thrusting");
+        }
     }
 }

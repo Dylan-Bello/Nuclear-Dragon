@@ -8,6 +8,7 @@ public class PlayerHealthManager : MonoBehaviour
 
     public int playerStartingHealth = 50;
     public int playerCurrentHealth;
+    public int regenRate;
 
     public Healthbar healthBar;
 
@@ -37,6 +38,12 @@ public class PlayerHealthManager : MonoBehaviour
 
         healthBar.SetHealth(playerCurrentHealth);
     }
+
+    public void RegenHealth()
+    {
+        if GameObject.GetComponent.Flight.CheckThrust.thrust = false
+    }
+
 
     
 
