@@ -24,15 +24,27 @@ public class Bullet : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        //if (other.gameObject.tag == "Player")
-        //{
-            other.gameObject.GetComponent<PlayerHealthManager>().TakeDamage(damageToTake);
+        if (other.gameObject.tag == "Enemy")
+        {
+            other.gameObject.GetComponent<Enemy>().TakeDamage(damageToTake);
+
+            
 
             Destroy(this.gameObject);
 
             //Debug.Log("Bullet Hit!");
-       // }
+        }
+        
+        if (other.gameObject.tag == "Player")
+        {
+            other.gameObject.GetComponent<PlayerHealthManager>().TakeDamage(damageToTake);
 
+            
+
+            Destroy(this.gameObject);
+
+            //Debug.Log("Bullet Hit!");
+        }
         //Debug.Log("Collision Detected");
     }
 

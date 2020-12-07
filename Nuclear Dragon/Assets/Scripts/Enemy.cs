@@ -7,48 +7,99 @@ public class Enemy : MonoBehaviour
     public float moveSpeed;
     public float turnSpeed;
     public float stopDistance;
+
     public float fireRange;
     public float fireDelay;
 
-    private float cooldownTimer;
+    public int xpValue = 1;
+    //public GameObject Projectile;
 
-    public Transform target;
+    //How much time between bursts
+    public float burstDelay;
+    //How many bullets per burst
+    public float bulletsPerBurst;
+
+    private float cooldownTimer;
+    private float burstCount = 0;
+    private float burstCoolDownTimer;
+
+    //Gavin's edit
+    public int enemyStartingHealth = 20;
+    public int enemyCurrentHealth;
+    public int scoreValue = 10;
+
+    public Transform shootTarget;
+    public Transform[] wayPoints;
+    private int wayPointsIndex;
     private Rigidbody rb;
 
-    // Start is called before the first frame update
-    void Start()
+    public bool isPlayerChaser;
+
+void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        shootTarget = GameObject.FindGameObjectWithTag("Player").transform;
+        wayPointsIndex = 0;
+
+        if (isPlayerChaser == true)
+        {
+            wayPoints[0] = GameObject.FindGameObjectWithTag("Player").transform;
+        }
         
+        //Gavin's edit
+        enemyCurrentHealth = enemyStartingHealth;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
         //transform.LookAt(Vector3.zero);
         cooldownTimer -= Time.deltaTime;
+        burstCoolDownTimer -= Time.deltaTime;
 
-        Vector3 direction = target.position - transform.position;
+        Vector3 direction = shootTarget.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Vector3 rotation = new Vector3(0, 0, angle);
 
-        if (Vector2.Distance(transform.position, target.position) > stopDistance)
+        if (Vector2.Distance(transform.position, wayPoints[wayPointsIndex].position) > stopDistance)
         {
             Chase();
         }
 
-        if (Vector2.Distance(transform.position, target.position) < fireRange && cooldownTimer <= 0)
+        else //when reaching destination, select and move to the next destination,
         {
-            this.gameObject.GetComponent<Shooting>().Shoot();
+            wayPointsIndex++;
+            if (wayPointsIndex == wayPoints.Length)
+            {
+                //and then back to the start.
+                wayPointsIndex = 0;
+            }
+        }
+
+        if (Vector2.Distance(transform.position, shootTarget.position) < fireRange && cooldownTimer <= 0 && burstCoolDownTimer <= 0)
+        {
+            this.gameObject.GetComponent<Shooting>().Shoot(false);
             cooldownTimer = fireDelay;
+
+            //A second timer for spacing out bursts of projectiles
+            burstCount++;
+            if (burstCount >= bulletsPerBurst)
+            {
+                burstCount = 0;
+                burstCoolDownTimer = burstDelay;
+            }
+
         }
 
         UpdateRotation(rotation);
+
+         
     }
 
     void Chase()
     {
-        transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, wayPoints[wayPointsIndex].position, moveSpeed * Time.deltaTime);
     }
 
     void UpdateRotation(Vector3 angle)
@@ -56,5 +107,24 @@ public class Enemy : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(angle);
         this.transform.rotation = Quaternion.Lerp(this.transform.rotation, rotation, turnSpeed * Time.deltaTime);
     }
+
+    //Gavin's edit
+    void FixedUpdate()
+    {
+        if(enemyCurrentHealth <= 0)
+        {
+            ScoreManager.score += scoreValue;
+            Destroy(this.gameObject);
+            shootTarget.GetComponent<PlayerController>().GainXP(xpValue);
+
+        }
+    }
+
+    public void TakeDamage (int damageToTake)
+    {
+        enemyCurrentHealth -= damageToTake;
+    }
+
+
 
 }
