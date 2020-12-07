@@ -42,7 +42,7 @@ public class CameraFollow : MonoBehaviour
 
         transform.position = new Vector3(
             Mathf.Clamp(endPos.x, -700f, 920f), 
-            Mathf.Clamp(endPos.y, -40f, 185f), transform.position.z);
+            Mathf.Clamp(endPos.y, -50f, 185f), transform.position.z);
     }
 
     

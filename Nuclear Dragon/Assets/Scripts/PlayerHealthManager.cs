@@ -39,11 +39,11 @@ public class PlayerHealthManager : MonoBehaviour
         healthBar.SetHealth(playerCurrentHealth);
     }
 
-    public void RegenHealth()
+   /* public void RegenHealth()
     {
-        if GameObject.GetComponent.Flight.CheckThrust.thrust = false
+        if GameObject.GetComponent.Flight.CheckThrust.thrust = false;
     }
-
+   */
 
     
 
