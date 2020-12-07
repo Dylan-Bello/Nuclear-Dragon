@@ -66,6 +66,7 @@ void Start()
         {
             Chase();
         }
+
         else //when reaching destination, select and move to the next destination,
         {
             moveTargetIndex++;
