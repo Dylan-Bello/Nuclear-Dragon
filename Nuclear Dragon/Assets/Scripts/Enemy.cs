@@ -29,8 +29,8 @@ public class Enemy : MonoBehaviour
     public int scoreValue = 10;
 
     public Transform shootTarget;
-    public Transform[] moveTarget;
-    private int moveTargetIndex;
+    public Transform[] wayPoints;
+    private int wayPointsIndex;
     private Rigidbody rb;
 
     public bool isPlayerChaser;
@@ -38,11 +38,11 @@ public class Enemy : MonoBehaviour
 void Start()
     {
         shootTarget = GameObject.FindGameObjectWithTag("Player").transform;
-        moveTargetIndex = 0;
+        wayPointsIndex = 0;
 
         if (isPlayerChaser == true)
         {
-            moveTarget[0] = GameObject.FindGameObjectWithTag("Player").transform;
+            wayPoints[0] = GameObject.FindGameObjectWithTag("Player").transform;
         }
         
         //Gavin's edit
@@ -62,17 +62,17 @@ void Start()
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Vector3 rotation = new Vector3(0, 0, angle);
 
-        if (Vector2.Distance(transform.position, moveTarget[moveTargetIndex].position) > stopDistance)
+        if (Vector2.Distance(transform.position, wayPoints[wayPointsIndex].position) > stopDistance)
         {
             Chase();
         }
         else //when reaching destination, select and move to the next destination,
         {
-            moveTargetIndex++;
-            if (moveTargetIndex == moveTarget.Length)
+            wayPointsIndex++;
+            if (wayPointsIndex == wayPoints.Length)
             {
                 //and then back to the start.
-                moveTargetIndex = 0;
+                wayPointsIndex = 0;
             }
         }
 
@@ -98,7 +98,7 @@ void Start()
 
     void Chase()
     {
-        transform.position = Vector2.MoveTowards(transform.position, moveTarget[moveTargetIndex].position, moveSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, wayPoints[wayPointsIndex].position, moveSpeed * Time.deltaTime);
     }
 
     void UpdateRotation(Vector3 angle)
