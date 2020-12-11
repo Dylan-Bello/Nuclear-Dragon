@@ -34,8 +34,11 @@ public class Enemy : MonoBehaviour
     private Rigidbody rb;
 
     public bool isPlayerChaser;
+    public bool isPatroller;
+    private bool waypointsCreated = false;
+    public GameObject waypointObject;
 
-void Start()
+    void Start()
     {
         shootTarget = GameObject.FindGameObjectWithTag("Player").transform;
         wayPointsIndex = 0;
@@ -44,7 +47,9 @@ void Start()
         {
             wayPoints[0] = GameObject.FindGameObjectWithTag("Player").transform;
         }
-        
+
+
+
         //Gavin's edit
         enemyCurrentHealth = enemyStartingHealth;
 
@@ -62,10 +67,43 @@ void Start()
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Vector3 rotation = new Vector3(0, 0, angle);
 
+        if (isPatroller == true && waypointsCreated == false)
+        {
+
+            GameObject waypoint1 = Instantiate(waypointObject, this.transform.position, this.transform.rotation);
+            float newX = (this.transform.position.x - 75f);
+            float newY = (this.transform.position.y);
+            waypoint1.transform.position = new Vector3(newX, newY);
+
+            GameObject waypoint2 = Instantiate(waypointObject, this.transform.position, this.transform.rotation);
+            newX = (this.transform.position.x);
+            newY = (this.transform.position.y - 75f);
+            waypoint2.transform.position = new Vector3(newX, newY);
+
+            GameObject waypoint3 = Instantiate(waypointObject, this.transform.position, this.transform.rotation);
+            newX = (this.transform.position.x + 75f);
+            newY = (this.transform.position.y);
+            waypoint3.transform.position = new Vector3(newX, newY);
+
+            GameObject waypoint4 = Instantiate(waypointObject, this.transform.position, this.transform.rotation);
+            newX = (this.transform.position.x);
+            newY = (this.transform.position.y + 75f);
+            waypoint4.transform.position = new Vector3(newX, newY);
+
+            wayPoints[0] = waypoint1.transform;
+            wayPoints[1] = waypoint2.transform;
+            wayPoints[2] = waypoint3.transform;
+            wayPoints[3] = waypoint4.transform;
+
+            waypointsCreated = true;
+        }
+
         if (Vector2.Distance(transform.position, wayPoints[wayPointsIndex].position) > stopDistance)
         {
             Chase();
         }
+
+
 
         else //when reaching destination, select and move to the next destination,
         {

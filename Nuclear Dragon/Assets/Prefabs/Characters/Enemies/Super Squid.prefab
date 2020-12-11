@@ -220,7 +220,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 28.52589, y: 27.51925}
+  m_Size: {x: 10, y: 10}
   m_EdgeRadius: 0
 --- !u!114 &5500079532474095892
 MonoBehaviour:
@@ -246,8 +246,7 @@ MonoBehaviour:
   enemyCurrentHealth: 0
   scoreValue: 10
   shootTarget: {fileID: 804920975565445565, guid: 767cd4e13c5a02c49a2440471fcf860d, type: 3}
-  moveTarget:
-  - {fileID: 804920975565445565, guid: 767cd4e13c5a02c49a2440471fcf860d, type: 3}
+  wayPoints: []
   isPlayerChaser: 1
 --- !u!114 &5500079532474095893
 MonoBehaviour:

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 268963440699746637}
   - component: {fileID: 268963440699746636}
   m_Layer: 9
-  m_Name: Enemy
+  m_Name: Chaser Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -183,7 +183,11 @@ MonoBehaviour:
   bulletsPerBurst: 0
   enemyStartingHealth: 20
   enemyCurrentHealth: 0
-  target: {fileID: 1385159695646162589, guid: e3e1236ea1aaff94c958c31ae8e9f108, type: 3}
+  scoreValue: 10
+  shootTarget: {fileID: 0}
+  wayPoints:
+  - {fileID: 804920975565445565, guid: 767cd4e13c5a02c49a2440471fcf860d, type: 3}
+  isPlayerChaser: 1
 --- !u!114 &268963440699746636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,7 +208,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  spawnpoints: []
 --- !u!1 &268963441101167994
 GameObject:
   m_ObjectHideFlags: 0
