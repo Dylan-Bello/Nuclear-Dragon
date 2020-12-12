@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 1385159695646162565}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.3, y: -3.9, z: -0.26603}
-  m_LocalScale: {x: 1.6750283, y: 1.2467413, z: 0.5455226}
+  m_LocalScale: {x: 1.0307913, y: 0.7672288, z: 0.33570766}
   m_Children:
   - {fileID: 1385159696336817573}
   - {fileID: 1385159697193791635}
@@ -104,10 +104,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.05
+  m_Mass: 0.02
   m_LinearDrag: 0.5
   m_AngularDrag: 0.5
-  m_GravityScale: 1.8
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -126,8 +126,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.35037702, y: -0.95532185}
-  m_Size: {x: 1.0952404, y: 8.421805}
+  m_Offset: {x: -0.40645182, y: -0.9553217}
+  m_Size: {x: 1.0385636, y: 8.421804}
   m_Direction: 0
 --- !u!114 &1385159695646162561
 MonoBehaviour:
@@ -158,6 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStartingHealth: 100
   playerCurrentHealth: 0
+  regenRate: 0
   healthBar: {fileID: 0}
 --- !u!114 &1385159695646162567
 MonoBehaviour:
@@ -173,6 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxVelocity: 5
   turnSpeed: 3
+  thrust: 0
 --- !u!114 &1385159695646162566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,7 +195,6 @@ MonoBehaviour:
   - {fileID: 7303235653236529307, guid: 7d0877f4f7bde694f89def5435c7ae5b, type: 3}
   - {fileID: 784972622697286014, guid: a8323c77273f92c47808bd3901386286, type: 3}
   - {fileID: 7887287653565208936, guid: 34933798af93b914f99f6cf6e1dd4b63, type: 3}
-  spawnpoints: []
 --- !u!1 &1385159696336817572
 GameObject:
   m_ObjectHideFlags: 0

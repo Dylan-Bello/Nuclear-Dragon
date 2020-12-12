@@ -179,7 +179,7 @@ MonoBehaviour:
   fireRange: 70
   fireDelay: 1
   xpValue: 1
-  healthToGive: 5
+  healthToGive: 2
   burstDelay: 0
   bulletsPerBurst: 0
   enemyStartingHealth: 20
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532a3e37cf6f1dd4497768f1ed1a1b02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 7303235653236529307, guid: 7d0877f4f7bde694f89def5435c7ae5b, type: 3}
+  projectile: {fileID: 7303235653236529307, guid: 7aff42e51d671264dbd16663c7ff8bce, type: 3}
   spawnPoint: {fileID: 5181140892744485163}
   fireDelay: 0.5
   cooldownTimer: 0
