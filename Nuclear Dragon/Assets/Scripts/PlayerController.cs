@@ -9,15 +9,26 @@ public class PlayerController : MonoBehaviour
     public float xpForNextLevel = 10;
     public int level = 1;
 
-
     private Shooting shooting;
     private PlayerHealthManager health;
+
+    //All to do with Spawning Bosses
+    public GameObject[] bossSpawners;
+    private int activeSpawner;
+    public GameObject bossPrefab;
+    private GameObject boss;
+    private GameObject bossSpawnLocation;
+    public int levelsPerBoss;
+    private int levelsUntilBoss;
+
 
 
     private void Start()
     {
         SetXpForNextLevel();
         
+        levelsUntilBoss = levelsPerBoss;
+        activeSpawner = 0;
     }
 
 
@@ -70,6 +81,18 @@ public class PlayerController : MonoBehaviour
         Debug.Log("level" + level);
         SetXpForNextLevel();
 
+        levelsUntilBoss--;
+        if (levelsUntilBoss <= 0)
+        {
+            levelsUntilBoss = levelsPerBoss;
+            boss = Instantiate(bossPrefab, bossSpawners[activeSpawner].transform.position, bossSpawners[activeSpawner].transform.rotation);
+            activeSpawner++;
+
+            if (activeSpawner == bossSpawners.Length)
+            {
+                activeSpawner = 0;
+            }
+        }
     }
 
     public void GainXP(int xpToGain)

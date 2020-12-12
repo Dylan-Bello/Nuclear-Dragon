@@ -27,9 +27,9 @@ public class Shooting : MonoBehaviour
 
     public void ChangeWeapon()
     {
-        if(projectileIndex <= ProjectileType.Length)
+        projectileIndex++;
+        if (projectileIndex < ProjectileType.Length)
         {
-            projectileIndex++;
             this.projectile = ProjectileType[projectileIndex];
 
 

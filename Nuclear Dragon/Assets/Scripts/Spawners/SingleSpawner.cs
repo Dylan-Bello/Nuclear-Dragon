@@ -8,7 +8,6 @@ public class SingleSpawner : MonoBehaviour
     private GameObject spawnLocation;
 
     public Transform spawnPoint;
-    public int count;
     public float rate;
     private float timer;
 

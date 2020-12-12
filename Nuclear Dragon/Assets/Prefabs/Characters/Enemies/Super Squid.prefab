@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6bce24b219330743846291a67e91a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 25
   turnSpeed: 3
   stopDistance: 1
   fireRange: 150
@@ -247,7 +247,8 @@ MonoBehaviour:
   enemyCurrentHealth: 0
   scoreValue: 10
   shootTarget: {fileID: 804920975565445565, guid: 767cd4e13c5a02c49a2440471fcf860d, type: 3}
-  wayPoints: []
+  wayPoints:
+  - {fileID: 0}
   isPlayerChaser: 1
   isPatroller: 0
   waypointObject: {fileID: 0}
