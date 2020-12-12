@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 
 
     private Shooting shooting;
+    private PlayerHealthManager health;
 
 
     private void Start()
@@ -23,7 +24,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         shooting = this.GetComponent<Shooting>();
-        
+        health = this.GetComponent<PlayerHealthManager>();
     }
 
     // Update is called once per frame
@@ -49,6 +50,7 @@ public class PlayerController : MonoBehaviour
         {
             LevelUp();
             shooting.ChangeWeapon();
+            health.RegenHealthFull();
         }
 
 
@@ -64,6 +66,7 @@ public class PlayerController : MonoBehaviour
     {
         xp = 0f;
         level++;
+
         Debug.Log("level" + level);
         SetXpForNextLevel();
 

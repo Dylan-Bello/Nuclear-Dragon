@@ -30,6 +30,11 @@ public class PlayerHealthManager : MonoBehaviour
             Destroy(this.gameObject);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
+
+        if(playerCurrentHealth > playerStartingHealth)
+        {
+            playerCurrentHealth = playerStartingHealth;
+        }
     }
 
     public void TakeDamage (int damageToTake)
@@ -39,11 +44,16 @@ public class PlayerHealthManager : MonoBehaviour
         healthBar.SetHealth(playerCurrentHealth);
     }
 
-   /* public void RegenHealth()
+    public void RegenHealth(int healthToGive)
     {
-        if GameObject.GetComponent.Flight.CheckThrust.thrust = false;
+        playerCurrentHealth += healthToGive;
     }
-   */
+
+    public void RegenHealthFull()
+    {
+        playerCurrentHealth = playerStartingHealth;
+    }
+   
 
     
 

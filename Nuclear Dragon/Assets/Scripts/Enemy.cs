@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     public float fireDelay;
 
     public int xpValue = 1;
+    public int healthToGive;
     //public GameObject Projectile;
 
     //How much time between bursts
@@ -154,6 +155,7 @@ public class Enemy : MonoBehaviour
             ScoreManager.score += scoreValue;
             Destroy(this.gameObject);
             shootTarget.GetComponent<PlayerController>().GainXP(xpValue);
+            shootTarget.GetComponent<PlayerHealthManager>().RegenHealth(healthToGive);
 
         }
     }

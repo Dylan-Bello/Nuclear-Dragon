@@ -152,6 +152,7 @@ MonoBehaviour:
   fireRange: 100
   fireDelay: 0.1
   xpValue: 1
+  healthToGive: 10
   burstDelay: 1.2
   bulletsPerBurst: 2
   enemyStartingHealth: 50

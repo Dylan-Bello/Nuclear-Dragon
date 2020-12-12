@@ -240,6 +240,7 @@ MonoBehaviour:
   fireRange: 150
   fireDelay: 0.05
   xpValue: 20
+  healthToGive: 50
   burstDelay: 5
   bulletsPerBurst: 30
   enemyStartingHealth: 400
@@ -248,6 +249,8 @@ MonoBehaviour:
   shootTarget: {fileID: 804920975565445565, guid: 767cd4e13c5a02c49a2440471fcf860d, type: 3}
   wayPoints: []
   isPlayerChaser: 1
+  isPatroller: 0
+  waypointObject: {fileID: 0}
 --- !u!114 &5500079532474095893
 MonoBehaviour:
   m_ObjectHideFlags: 0
