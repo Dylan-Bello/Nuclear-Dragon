@@ -13384,7 +13384,7 @@ PrefabInstance:
     - target: {fileID: 1385159695646162561, guid: e3e1236ea1aaff94c958c31ae8e9f108, type: 3}
       propertyPath: bossPrefab
       value: 
-      objectReference: {fileID: 268963440699746631, guid: 89c6ba22b23fd2742955ea5b5ab569b3, type: 3}
+      objectReference: {fileID: 5500079532474095902, guid: de6d2e05b9464014688a873e70e986d0, type: 3}
     - target: {fileID: 1385159695646162561, guid: e3e1236ea1aaff94c958c31ae8e9f108, type: 3}
       propertyPath: bossSpawners.Array.data[1]
       value: 

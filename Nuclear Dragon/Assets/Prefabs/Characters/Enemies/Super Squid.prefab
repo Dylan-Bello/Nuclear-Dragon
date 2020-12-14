@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 25
-  turnSpeed: 4
+  turnSpeed: 5
   stopDistance: 1
   fireRange: 150
   fireDelay: 0.05
@@ -245,7 +245,7 @@ MonoBehaviour:
   bulletsPerBurst: 30
   enemyStartingHealth: 400
   enemyCurrentHealth: 0
-  scoreValue: 10
+  scoreValue: 100
   shootTarget: {fileID: 804920975565445565, guid: 767cd4e13c5a02c49a2440471fcf860d, type: 3}
   wayPoints:
   - {fileID: 0}
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532a3e37cf6f1dd4497768f1ed1a1b02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 7887287653565208936, guid: 34933798af93b914f99f6cf6e1dd4b63, type: 3}
+  projectile: {fileID: 6662670263174682605, guid: d10b90a204865424aa06debd9c889a62, type: 3}
   spawnPoint: {fileID: 4511545415487988375}
   fireDelay: 0.5
   cooldownTimer: 0

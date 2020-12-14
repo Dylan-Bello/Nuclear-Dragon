@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 0.2
-  damageToTake: 5
+  damageToTake: 10
 --- !u!212 &6218896928654326152
 SpriteRenderer:
   m_ObjectHideFlags: 0
