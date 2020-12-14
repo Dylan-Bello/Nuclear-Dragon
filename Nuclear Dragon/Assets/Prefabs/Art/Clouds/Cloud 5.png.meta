@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: c71e9c1178a3f86428cdd70a172bbda7
+<<<<<<< Updated upstream:Nuclear Dragon/Assets/Prefabs/Art/Clouds/Cloud 5.png.meta
+guid: a1d3c8e8ec37a6645927c6b71c874825
+=======
+guid: 799ddeddc811de548a5860772b449cd1
+>>>>>>> Stashed changes:Nuclear Dragon/Assets/Dragon body.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
