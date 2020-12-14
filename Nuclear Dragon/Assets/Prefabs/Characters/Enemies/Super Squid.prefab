@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 25
-  turnSpeed: 3
+  turnSpeed: 4
   stopDistance: 1
   fireRange: 150
   fireDelay: 0.05
