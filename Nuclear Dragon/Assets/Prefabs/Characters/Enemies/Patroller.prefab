@@ -151,7 +151,7 @@ MonoBehaviour:
   stopDistance: 0
   fireRange: 100
   fireDelay: 0.1
-  xpValue: 1
+  xpValue: 3
   healthToGive: 5
   burstDelay: 1.2
   bulletsPerBurst: 2
